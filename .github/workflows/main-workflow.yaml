@@ -4,9 +4,12 @@ jobs:
   job-name:
     runs-on: ubuntu-latest
     steps:
+      - name: copy code from repo
+        uses: actions/checkout@v4
+      - name: see the files
+        run: ls
       - name: refresh registry
         run: sudo apt update
-      - run: ls
       - name: install node
         run: sudo apt install nodejs
       - name: check node version
