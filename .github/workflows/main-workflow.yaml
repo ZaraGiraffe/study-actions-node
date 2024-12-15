@@ -1,4 +1,10 @@
-on: push
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   job-name:
@@ -6,18 +12,17 @@ jobs:
     steps:
       - name: copy code from repo
         uses: actions/checkout@v4
+      
       - name: see the files
         run: ls
-      - name: refresh registry
-        run: sudo apt update
-      - name: install node
-        run: sudo apt install nodejs
-      - name: check node version
-        run: node -v
-      - name: install npm
-        run: sudo apt install npm
-      - name: check npm version
-        run: npm -v
+      
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
       - name: install dependencies
         run: npm install 
       
+      - name: run tests
+        run: echo "There is no tests"
