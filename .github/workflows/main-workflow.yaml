@@ -1,0 +1,19 @@
+on: push
+
+jobs:
+  job-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: refresh registry
+        run: sudo apt update
+      - name: install node
+        run: sudo apt install nodejs
+      - name: check node version
+        run: node -v
+      - name: install npm
+        run: sudo apt install npm
+      - name: check npm version
+        run: npm -v
+      - name: install dependencies
+        run: npm install 
+      
